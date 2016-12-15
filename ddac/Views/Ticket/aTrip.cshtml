@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ddac.Models.Trip>
+
+@{
+    ViewBag.Title = "Trip";
+}
+
+<h2>Trip</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Days)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ships)
+        </th>
+        <th></th>
+    </tr>
+
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelitem => Model.ToList()[i].StartDate, "{0:dd/MM/yyyy}")
+            </td>
+            <td>
+                @Model.ToList()[i].Days
+            </td>
+            <td>
+                @Model.ToList()[i].dName
+            </td>
+            <td>
+                @Model.ToList()[i].aName
+            </td>
+            <td>
+                @Model.ToList()[i].sName
+            </td>
+            <td>
+                @Html.ActionLink("Purchase", "Purchase", new { id = Model.ToList()[i].Id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,55 @@
+﻿@model ddac.Models.ViewModels.PurchaseVM
+
+@{
+    ViewBag.Title = "Ship";
+}
+<div class="form-horizontal">
+    <h2>Details</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                Ship Name
+            </th>
+            <th>
+                Total Classic Cabin
+            </th>
+            <th>
+                Total Luxury Cabin
+            </th>
+            <th>
+                Classic Cabin Price
+            </th>
+            <th>
+                Luxury Cabin Price
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Model.shipName
+            </td>
+            <td>
+                @Model.Total_Classic_Cabin
+            </td>
+            <td>
+                @Model.Total_Luxury_Cabin
+            </td>
+            <td>
+                @Model.Classic_Cabin_Price
+            </td>
+            <td>
+                @Model.Luxury_Cabin_Price
+            </td>
+        </tr>
+    </table>
+    <div>
+        @Html.HiddenFor(x => x.tripId)
+    </div>
+    <p>
+        @Html.ActionLink("Buy Classic Cabin", "Confirmation", new { name = Model.shipName, type = "Classic", id = Model.tripId })
+    </p>
+    <p>
+        @Html.ActionLink("Buy Luxury Cabin", "Confirmation", new { name = Model.shipName, type = "Luxury", id = Model.tripId })
+    </p>
+    
+</div>

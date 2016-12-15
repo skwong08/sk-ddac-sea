@@ -1,0 +1,97 @@
+﻿@model ddac.Models.ViewModels.TicketIndexVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Get trips by departure location</h4>
+        <hr />
+        @Html.LabelFor(i => i.DepartureLocation, new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.ListBoxFor(i => Model.DepartureIds, Model.DepartureLocation,
+                 new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.DepartureLocation,
+                "", new { @class = "text-warning" })
+        </div>
+        @for (int i = 0; i < Model.ArrivalIds.Count(); i++)
+        {
+            @Html.HiddenFor(model => Model.ArrivalIds[i])
+        }
+        @for (int i = 0; i < Model.ShipIds.Count(); i++)
+        {
+            @Html.HiddenFor(model => Model.ShipIds[i])
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Go" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Get trips by arrival location</h4>
+        <hr />
+        @Html.LabelFor(i => i.ArrivalLocation, new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.ListBoxFor(i => Model.ArrivalIds, Model.ArrivalLocation,
+                 new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.ArrivalLocation,
+                "", new { @class = "text-warning" })
+        </div>
+
+        @for (int i = 0; i < Model.DepartureIds.Count(); i++)
+        {
+            @Html.HiddenFor(model => Model.DepartureIds[i])
+        }
+        @for (int i = 0; i < Model.ShipIds.Count(); i++)
+        {
+            @Html.HiddenFor(model => Model.ShipIds[i])
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Go" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Get trips by ships</h4>
+        <hr />
+        @Html.LabelFor(i => i.Ship, new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.ListBoxFor(i => Model.ShipIds, Model.Ship,
+                 new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.Ship,
+                "", new { @class = "text-warning" })
+        </div>
+
+        @for (int i = 0; i < Model.DepartureIds.Count(); i++)
+        {
+            @Html.HiddenFor(model => Model.DepartureIds[i])
+        }
+        @for (int i = 0; i < Model.ArrivalIds.Count(); i++)
+        {
+            @Html.HiddenFor(model => Model.ArrivalIds[i])
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Go" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
